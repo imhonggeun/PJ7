@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<h1>디테일 화면</h1>
+	</div>
+	<div>
+		<form th:action="@{/edit(no=${result.no})}" method="post">
+			<th:block th:each= "detail : ${result}">
+				<th>제목<input type ="text" id="title" name="title" th:value="${result.title}"></th>
+				<th>내용<input type ="text" id="content" name="content" th:value="${result.title}"></th>	
+				<th><button type="submit">수정</button></th>			
+			</th:block>
+			<th:block th:if="${!result.accept}">
+				<a th:href="@{/accept(no=${result.no},accept=0)}">승인</a>
+			</th:block>
+			<th:block th:if="${result.accept}">
+				<a th:href="@{/accept(no=${result.no},accept=1)}">미승인</a>
+			</th:block>
+			
+		</form>
+	</div>
+</body>
+</html>

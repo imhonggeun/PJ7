@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+</head>
+<body>	
+	<div>
+		<div>
+			<h1>전체 리스트</h1>
+			<a href="/">전체리스트</a>
+			<a href="/input">추가</a>		
+			<a href="/?accept=1">승인</a>
+			<a href="/?accept=0">미승인</a>
+		</div>
+		<div >
+			<th:block th:each="row : ${result}">
+				<a 
+					th:href="@{/detail(no=${row.no})}"
+					th:text="${row.title}"></a>
+			</th:block>
+		</div>
+	</div>
+</body>
+</html>
+
